@@ -1,0 +1,42 @@
+﻿@model RegisterViewModel
+@{
+	ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center">Register</h1>
+<p class="text-center">
+	Have an account?
+	<button type="submit" class="btn btn-outline-primary" form="loginForm">Login</button>
+	<form asp-controller="Account" asp-action="Login" id="loginForm" method="get">
+		<input type="hidden" name="ReturnUrl" value="@Context.Request.Query["ReturnUrl"]" />
+	</form>
+</p>
+<form asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post" class="w-50 m-auto">
+	<div asp-validation-summary="ModelOnly" class="mb-3 text-danger"></div>
+	<div class="mb-3">
+		<label asp-for="Login" class="control-label"></label>
+		<input asp-for="Login" class="form-control" />
+		<span asp-validation-for="Login" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label asp-for="Email" class="control-label"></label>
+		<input asp-for="Email" class="form-control" />
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label asp-for="Phone" class="control-label"></label>
+		<input asp-for="Phone" class="form-control" />
+		<span asp-validation-for="Phone" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label asp-for="Password" class="control-label"></label>
+		<input asp-for="Password" class="form-control" />
+		<span asp-validation-for="Password" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label asp-for="ConfirmPassword" class="control-label"></label>
+		<input asp-for="ConfirmPassword" class="form-control" />
+		<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-success">Register</button>
+</form>

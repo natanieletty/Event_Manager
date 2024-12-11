@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Unregistration Success";
+    if (User.IsInRole("admin"))
+    {
+        Layout = "_AdminLayout";
+    }
+}
+
+<h1 class="text-center text-success">Unregistration Success</h1>
+<p class="text-center text-success">You've successfully unregistered for an event. <a asp-controller="Account" asp-action="Index" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</a></p>

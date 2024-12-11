@@ -1,0 +1,26 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Home Page";
+    if (User.IsInRole("admin"))
+    {
+        Layout = "_AdminLayout";
+    }
+}
+
+<div>
+    <span class="@(User.IsInRole("admin") ? "text-white " : "")text-decoration-underline">Home</span>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Message"]</h1>
+    @if (User.IsInRole("admin"))
+    {
+        <p>You have full control over the system. Use the navigation panel to manage events and participants.</p>
+        <a class="btn btn-primary mt-3" asp-controller="Events" asp-action="Add">Create New Event</a>
+    }
+    else
+    {
+        <p>Explore upcoming events and register to join the community!</p>
+        <a class="btn btn-success mt-3" asp-controller="Events" asp-action="Index">View All Events</a>
+    }
+</div>

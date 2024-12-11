@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Unregistration Error";
+    if (User.IsInRole("admin"))
+    {
+        Layout = "_AdminLayout";
+    }
+}
+
+<h1 class="text-center text-danger">Unregistration Error</h1>
+<p class="text-center text-danger">Something went wrong when trying to unregister you. <a asp-controller="Account" asp-action="Index" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</a></p>

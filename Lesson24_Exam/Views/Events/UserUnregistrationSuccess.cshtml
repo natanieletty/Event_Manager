@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Unregistration Success";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-center text-success">Unregistration Success</h1>
+<form asp-action="Details" asp-route-id="@ViewBag.EventId" method="get">
+    <p class="text-center text-success">You've successfully unregistered user for an event. <button type="submit" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</button></p>
+</form>

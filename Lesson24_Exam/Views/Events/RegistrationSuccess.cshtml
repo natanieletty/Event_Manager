@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Registration Success";
+    if (User.IsInRole("admin"))
+    {
+        Layout = "_AdminLayout";
+    }
+}
+
+<h1 class="text-center text-success">Registration Success</h1>
+<p class="text-center text-success">You've successfully registered for an event'. <a asp-action="Index" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</a></p>

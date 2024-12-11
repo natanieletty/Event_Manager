@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Registration Error";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-center text-danger">Registration Error</h1>
+<form asp-action="Details" asp-route-id="@ViewBag.EventId" method="get">
+    <p class="text-center text-danger">Something went wrong when trying to register user. <button type="submit" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</button></p>
+</form>

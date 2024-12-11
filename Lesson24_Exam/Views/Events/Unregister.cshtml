@@ -1,0 +1,45 @@
+﻿@using System.Security.Claims
+@model Event
+@{
+    ViewData["Title"] = "Unregister For Event";
+    if (User.IsInRole("admin"))
+    {
+        Layout = "_AdminLayout";
+    }
+}
+
+<h1 class="text-center text-danger">Confirm unregistration for event (<strong>@Model.Users.Count</strong> participants)?</h1>
+<form method="post" class="w-50 m-auto text-danger">
+    <input asp-for="Id" type="hidden" />
+    <div class="mb-3">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control text-danger" readonly></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateTime" class="control-label"></label>
+        <input asp-for="DateTime" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="MaxParticipants" class="control-label"></label>
+        <input asp-for="MaxParticipants" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Category" class="control-label"></label>
+        <select asp-for="Category" asp-items="Html.GetEnumSelectList<EventType>()" class="form-select text-danger" disabled></select>
+    </div>
+    @if (User.IsInRole("admin"))
+    {
+        <div class="mb-3">
+            <input asp-for="IsPublic" class="form-check-inline" disabled />
+            <label asp-for="IsPublic" class="control-label"></label>
+        </div>
+    }
+    <div class="btn-group">
+        <button type="submit" class="btn btn-danger">Unregister as @User.FindFirst(ClaimTypes.Name).Value</button>
+        <a asp-controller="Account" asp-action="Index" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Cancel</a>
+    </div>
+</form>

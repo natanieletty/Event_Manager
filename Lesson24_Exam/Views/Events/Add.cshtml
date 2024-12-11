@@ -1,0 +1,44 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Add Event";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-center">Add Event</h1>
+<form method="post" class="w-50 m-auto">
+    <div asp-validation-summary="ModelOnly" class="mb-3 text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateTime" class="control-label"></label>
+        <input asp-for="DateTime" class="form-control" />
+        <span asp-validation-for="DateTime" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="MaxParticipants" class="control-label"></label>
+        <input asp-for="MaxParticipants" class="form-control" />
+        <span asp-validation-for="MaxParticipants" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Category" class="control-label"></label>
+        <select asp-for="Category" asp-items="Html.GetEnumSelectList<EventType>()" class="form-select"></select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="IsPublic" class="form-check-inline" />
+        <label asp-for="IsPublic" class="control-label"></label>
+        <span asp-validation-for="IsPublic" class="text-danger"></span>
+    </div>
+    <div class="btn-group">
+        <button type="submit" class="btn btn-success">Add</button>
+        <a asp-action="Index" class="btn btn-outline-light">Cancel</a>
+    </div>
+</form>

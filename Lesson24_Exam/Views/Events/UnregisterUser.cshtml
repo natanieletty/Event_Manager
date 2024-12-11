@@ -1,0 +1,55 @@
+﻿@model EventUserTupleViewModel
+@{
+    ViewData["Title"] = "Unregister User";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-center text-danger">Confirm user unregistration (<strong>@Model.Event.Users.Count</strong> participants)</h1>
+<form method="post" class="w-50 m-auto text-danger">
+    <hr />
+    <h2>Event</h2>
+    <input asp-for="Event.Id" type="hidden" />
+    <div class="mb-3">
+        <label asp-for="Event.Title" class="control-label"></label>
+        <input asp-for="Event.Title" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Event.Description" class="control-label"></label>
+        <textarea asp-for="Event.Description" class="form-control text-danger" readonly></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Event.DateTime" class="control-label"></label>
+        <input asp-for="Event.DateTime" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Event.MaxParticipants" class="control-label"></label>
+        <input asp-for="Event.MaxParticipants" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Event.Category" class="control-label"></label>
+        <select asp-for="Event.Category" asp-items="Html.GetEnumSelectList<EventType>()" class="form-select text-danger" disabled></select>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Event.IsPublic" class="form-check-inline" disabled />
+        <label asp-for="Event.IsPublic" class="control-label"></label>
+    </div>
+    <hr />
+    <h2>User</h2>
+    <div class="mb-3">
+        <label asp-for="User.UserName" class="control-label"></label>
+        <input asp-for="User.UserName" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="User.Email" class="control-label"></label>
+        <input asp-for="User.Email" class="form-control text-danger" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="User.PhoneNumber" class="control-label"></label>
+        <input asp-for="User.PhoneNumber" class="form-control text-danger" readonly />
+    </div>
+    <hr />
+    <div class="btn-group">
+        <button type="submit" class="btn btn-danger">Unregister</button>
+        <a asp-action="Details" asp-route-id="@ViewBag.EventId" class="btn btn-outline-light">Cancel</a>
+    </div>
+</form>

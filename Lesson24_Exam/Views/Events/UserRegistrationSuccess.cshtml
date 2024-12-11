@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Registration Success";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-center text-success">Registration Success</h1>
+<form asp-action="Details" asp-route-id="@ViewBag.EventId" method="get">
+    <p class="text-center text-success">You've successfully registered user for an event. <button type="submit" class="btn btn-outline-@(User.IsInRole("admin") ? "light" : "dark")">Back</button></p>
+</form>

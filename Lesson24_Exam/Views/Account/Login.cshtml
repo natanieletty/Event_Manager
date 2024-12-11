@@ -1,0 +1,31 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="text-center">Login</h1>
+<p class="text-center">
+    Don't have an account?
+    <button type="submit" class="btn btn-outline-success" form="registerForm">Register</button>
+    <form asp-controller="Account" asp-action="Register" id="registerForm" method="get">
+        <input type="hidden" name="ReturnUrl" value="@Context.Request.Query["ReturnUrl"]" />
+    </form>
+</p>
+<form asp-route-ReturnUrl="@Context.Request.Query["ReturnUrl"]" method="post" class="w-50 m-auto">
+    <div asp-validation-summary="ModelOnly" class="mb-3 text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Login" class="control-label"></label>
+        <input asp-for="Login" class="form-control" />
+        <span asp-validation-for="Login" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="RememberMe" class="form-check-inline" />
+        <label asp-for="RememberMe" class="control-label"></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
